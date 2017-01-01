@@ -1,0 +1,280 @@
+[
+  {
+    "id": "498911f1.ec576",
+    "type": "inject",
+    "z": "7f5a92b2.e3fadc",
+    "name": "8 LEDs",
+    "topic": "pepperkakehus/1/n",
+    "payload": "8",
+    "payloadType": "num",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 235.5,
+    "y": 22,
+    "wires": [
+      [
+        "664421eb.6240d"
+      ]
+    ]
+  },
+  {
+    "id": "b86a85b6.2ee2e8",
+    "type": "inject",
+    "z": "7f5a92b2.e3fadc",
+    "name": "2 LEDs",
+    "topic": "pepperkakehus/1/n",
+    "payload": "2",
+    "payloadType": "num",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 234.5,
+    "y": 100,
+    "wires": [
+      [
+        "664421eb.6240d"
+      ]
+    ]
+  },
+  {
+    "id": "664421eb.6240d",
+    "type": "mqtt out",
+    "z": "7f5a92b2.e3fadc",
+    "name": "Pepperkakehus",
+    "topic": "",
+    "qos": "1",
+    "retain": "",
+    "broker": "fbf7abe2.ec30a8",
+    "x": 506.5,
+    "y": 91,
+    "wires": []
+  },
+  {
+    "id": "638b4dc2.1b9804",
+    "type": "inject",
+    "z": "7f5a92b2.e3fadc",
+    "name": "Red On",
+    "topic": "pepperkakehus/1/r",
+    "payload": "100",
+    "payloadType": "num",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 83.5,
+    "y": 183,
+    "wires": [
+      [
+        "664421eb.6240d"
+      ]
+    ]
+  },
+  {
+    "id": "d3cffd4c.817ee",
+    "type": "inject",
+    "z": "7f5a92b2.e3fadc",
+    "name": "Red Off",
+    "topic": "pepperkakehus/1/r",
+    "payload": "0",
+    "payloadType": "num",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 241,
+    "y": 184,
+    "wires": [
+      [
+        "664421eb.6240d"
+      ]
+    ]
+  },
+  {
+    "id": "717f59f8.1673a8",
+    "type": "inject",
+    "z": "7f5a92b2.e3fadc",
+    "name": "Green On",
+    "topic": "pepperkakehus/1/g",
+    "payload": "100",
+    "payloadType": "num",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 90,
+    "y": 237,
+    "wires": [
+      [
+        "664421eb.6240d"
+      ]
+    ]
+  },
+  {
+    "id": "1b34c3cd.71291c",
+    "type": "inject",
+    "z": "7f5a92b2.e3fadc",
+    "name": "Green Off",
+    "topic": "pepperkakehus/1/g",
+    "payload": "0",
+    "payloadType": "num",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 251.5,
+    "y": 235,
+    "wires": [
+      [
+        "664421eb.6240d"
+      ]
+    ]
+  },
+  {
+    "id": "96e0a25a.6f44b",
+    "type": "inject",
+    "z": "7f5a92b2.e3fadc",
+    "name": "Blue On",
+    "topic": "pepperkakehus/1/b",
+    "payload": "100",
+    "payloadType": "num",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 79,
+    "y": 285,
+    "wires": [
+      [
+        "664421eb.6240d"
+      ]
+    ]
+  },
+  {
+    "id": "111d9f30.3a14c1",
+    "type": "inject",
+    "z": "7f5a92b2.e3fadc",
+    "name": "Blue Off",
+    "topic": "pepperkakehus/1/b",
+    "payload": "0",
+    "payloadType": "num",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 250.5,
+    "y": 280,
+    "wires": [
+      [
+        "664421eb.6240d"
+      ]
+    ]
+  },
+  {
+    "id": "c496b7ba.53e338",
+    "type": "inject",
+    "z": "7f5a92b2.e3fadc",
+    "name": "4 LEDs",
+    "topic": "pepperkakehus/1/n",
+    "payload": "4",
+    "payloadType": "num",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 234,
+    "y": 60,
+    "wires": [
+      [
+        "664421eb.6240d"
+      ]
+    ]
+  },
+  {
+    "id": "a1fb4c69.97d9a",
+    "type": "inject",
+    "z": "7f5a92b2.e3fadc",
+    "name": "20%",
+    "topic": "pepperkakehus/1/l",
+    "payload": "20",
+    "payloadType": "num",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 477,
+    "y": 332,
+    "wires": [
+      [
+        "664421eb.6240d"
+      ]
+    ]
+  },
+  {
+    "id": "5f2b139b.11b79c",
+    "type": "inject",
+    "z": "7f5a92b2.e3fadc",
+    "name": "100%",
+    "topic": "pepperkakehus/1/l",
+    "payload": "100",
+    "payloadType": "num",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 475,
+    "y": 249,
+    "wires": [
+      [
+        "664421eb.6240d"
+      ]
+    ]
+  },
+  {
+    "id": "50928157.08865",
+    "type": "inject",
+    "z": "7f5a92b2.e3fadc",
+    "name": "50%",
+    "topic": "pepperkakehus/1/l",
+    "payload": "50",
+    "payloadType": "num",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 477,
+    "y": 290,
+    "wires": [
+      [
+        "664421eb.6240d"
+      ]
+    ]
+  },
+  {
+    "id": "2b42607f.471fd",
+    "type": "inject",
+    "z": "7f5a92b2.e3fadc",
+    "name": "Off",
+    "topic": "pepperkakehus/1/l",
+    "payload": "0",
+    "payloadType": "num",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "x": 478,
+    "y": 369,
+    "wires": [
+      [
+        "664421eb.6240d"
+      ]
+    ]
+  },
+  {
+    "id": "fbf7abe2.ec30a8",
+    "type": "mqtt-broker",
+    "z": "",
+    "broker": "10.0.0.15",
+    "port": "1883",
+    "clientid": "",
+    "usetls": false,
+    "compatmode": true,
+    "keepalive": "60",
+    "cleansession": true,
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": "",
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": ""
+  }
+]
