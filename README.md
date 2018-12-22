@@ -1,10 +1,10 @@
 # Pepperkakehus
 
-Å finne på artige små greier man kan lage er en fin måte å lære på, og hvorfor ikke lage noe nyttig med det samme? Tradisjon tro skal det være pepperkakehus til jul, og det er jo mye finere med lys i. Siden det gamle lyspærebaserte lyset er ødelagt fikk jeg i år sjansen til å finne på noe nytt. I disse IoT-tider må jo også pepperkakehuset kunne styres via internett.
+Å finne på artige små greier man kan lage er en fin måte å lære på, og hvorfor ikke lage noe nyttig med det samme? Tradisjon tro skal det være pepperkakehus til jul, og det er jo mye finere med lys i. Siden det gamle lyspærebaserte lyset er ødelagt fikk jeg i et år sjansen til å finne på noe nytt. I disse IoT-tider må jo også pepperkakehuset kunne styres via internett.
 
 ![Pepperkakehuset](doc/Pepperkakehuset.jpg)
 
-I dette prosjektet bruker jeg en NeoPixel LED stripe med 8 lysdioder som kan styres individuelt i alle farger. Styringen gjøres vis en ESP8266, som enkelt sagt er en Arduino med wifi. Jeg sender meldinger til denne via en MQTT (meldingskø). I første omgang sender jeg meldinger generert i Node-RED. Node-RED og Mosquitto (for MQTT) kjører jeg på en Raspberry Pi 3 med Ubuntu Mate.
+I dette prosjektet bruker jeg en NeoPixel LED stripe med 8 lysdioder som kan styres individuelt i alle farger. Styringen gjøres vis en ESP8266, som enkelt sagt er en Arduino med wifi. Jeg sender meldinger til denne via en MQTT (meldingskø). I første omgang sender jeg meldinger generert i Node-RED. Node-RED og Mosquitto (for MQTT) kjører jeg på en Raspberry Pi 3.
 
 ![Delene satt sammen](doc/Delene satt sammen.jpg)
 
@@ -16,7 +16,7 @@ Jeg har prøvd flere mikrokontrollere med varierende hell:
 * ESP-12F
 * NodeMCU D1 Mini
 
-Alle er billige. På Ebay får du dem fra 16 til 30 kroner stykket. Alle programmeres enkelt via Arduino IDE. Jeg endte opp med den siste (NodeMCU) etter å ha ødelagt de to forrige. Måten jeg ødela dem på var å forsøke å oppdatere dem over wifi (OTA). Dette er i utgangspunktet mulig, men bare hvis programmet tar mindre en halvparten av det tilgjengelige minnet. Mitt program tok over halvparten, så etter jeg hadde forsøkt oppdatering var de ikke brukbare lenger. Det nyttet heller ikke å programmere dem via seriakabel (og USB). Etter litt googling konkluderte jeg med at jeg mest sannsynlig har skrevet over en del av minnet som jeg ikke skulle ha skrevet til. NodeMCU har derimot mer minne, så den gikk fint  oppdatere OTA.
+Alle er billige. På Ebay får du dem fra 16 til 30 kroner stykket. Alle programmeres enkelt via Arduino IDE. Jeg endte opp med den siste (NodeMCU) etter å ha ødelagt de to forrige. Måten jeg ødela dem på var å forsøke å oppdatere dem over wifi (OTA). Dette er i utgangspunktet mulig, men bare hvis programmet tar mindre en halvparten av det tilgjengelige minnet. Mitt program tok over halvparten, så etter jeg hadde forsøkt oppdatering var de ikke brukbare lenger. Det nyttet heller ikke å programmere dem via seriekabel (og USB). Etter litt googling konkluderte jeg med at jeg mest sannsynlig har skrevet over en del av minnet som jeg ikke skulle ha skrevet til. NodeMCU har derimot mer minne, så den gikk fint oppdatere OTA.
 
 ### ESP-01
 
@@ -57,21 +57,30 @@ Disse lysdiodene finnes i mange forskjellige utgaver. De kan kobles sammen i lan
 
 ## Strømforsyninga
 
-Som strømforsyning har jeg brukt en enkel omformer som kan ta 6-12V inn og levere både 3,3V og 5V ut. LED-stripa tar gjerne 5V, mens de to enkleste mikrokontrollerne begge skal ha 3,3V. NodeMCU kan imidlertid ta 5V inn.
+### NodeMCU
 
-På LAB-en bruker jeg en 12V batterieliminator, men i pepperkakehuset bruker jeg et 3S LiPo-batteri som kobles til direkte.
+NodeMCU har Micro-USB port og kan forsynes med 5V via denne. LED-stripa kan forsynes fra 5V-kontakten på kortet. Dermed trenger man bare en USB-lader og en kabel, så kan den lyse hele jula.
+
+### ESP-01 og ESP-12F
+
+Som strømforsyning til disse har jeg brukt en enkel omformer som kan ta 6-12V inn og levere både 3,3V og 5V ut. LED-stripa tar gjerne 5V, mens de to enkleste mikrokontrollerne begge skal ha 3,3V. 
 
 ![Batteri tilkoblet](doc/Batteri.jpg)
 
-Jeg er usikker på om denne strømforsyninga egentlig er god nok, for av en eller annen grunn restarter mikrokontrolleren med ujevne mellomrom. Jeg har foreløpig ikke identifisert årsaken til dette, men strømforsyninga kan være grunnen.
+
+## Problemer med restarting
+
+Av en eller annen grunn restarter mikrokontrolleren med ujevne mellomrom. Jeg har foreløpig ikke identifisert årsaken til dette, men det skjer uavhengig av hva jeg bruker til strømforsyning.
+
+Etter at jeg implementerte lagring av innstillinger i EEPROM er dette ikke noe stort problem.
 
 ## Koblingskjema
 
 Koblingen er så enkel at du nesten kan gjøre det ut fra bildet øverst, men her er en enkel beskrivelse:
 
-Mikrokontrolleren NodeMCU skal ha strøm (5V og GND) fr strømforsyninga.
+Mikrokontrolleren NodeMCU skal ha strøm (5V og GND) fra strømforsyninga.
 
-LED-stripa skal ha strøm (5V og GND) fr strømforsyninga.
+LED-stripa skal ha strøm (5V og GND) fra strømforsyninga.
 
 I tillegg skal Din på LED-stripa kobles til D4 på NodeMCU.
 
@@ -86,16 +95,32 @@ Koden finnes i fila Pepperkakehus.ino. Denne koden setter opp LED-stripa:
 #define PIN 2
 #define NUM_LEDS 8
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(NUM_LEDS, PIN, NEO_GRB + NEO_KHZ800);
-int numLeds = 4; // Initial number of lit leds
-int r = 50, g = 50, b = 50; // Initial color settings
-int brightness = 50; // Initial brightness
+
+struct Settings {
+  int version; // Figure ot if data has been saved before
+  int r;
+  int g;
+  int b;
+  int numLeds;
+  int brightness;
+};
+Settings settings;
+
+#define SETTINGS_VERSION 100
+#define DEFAULT_R 90
+#define DEFAULT_G 90
+#define DEFAULT_B 0
+#define DEFAULT_N 8
+#define DEFAULT_L 75
 ```
 
 PIN 2 står for GPIO2, som er D4 på NodeMCU. Denne er praktisk, da den står rett ved siden av GND og VCC, så man kan feste sammen alle de tre kablene som er i bruk. 
 
 NUM_LEDS er antall lysdioder.
 
-Variablene numLeds, r, g, b og brightness er her initiert med start-verdier. numLeds er antall lysdioder som er tent. r, g og b er fargene r, g og b. Biblioteket skal ha verdier mellom 0 og 255, men jeg setter de mellom 0 og 100, da det er enklere å tenke i prosent enn i 255-deler. Brightness bestemmer nivå samlet for alle LEDs og alle farger. Settes også mellom 0 og 100.
+Variablene i settings leses fra EEPROM ved oppstart. numLeds er antall lysdioder som er tent. r, g og b er fargene r, g og b. Biblioteket skal ha verdier mellom 0 og 255, men jeg setter de mellom 0 og 100, da det er enklere å tenke i prosent enn i 255-deler. Brightness bestemmer nivå samlet for alle LEDs og alle farger. Settes også mellom 0 og 100.
+
+NB! Jeg er usikker på om default-verdiene fungerer første gang. Da jeg hadde oppgradert var det mørkt helt til jeg begynte å stille inn fargene.
 
 Farger kan styres for hver enkelt LED, men her setter jeg alle tente LEDs likt, for enkelhets skyld.
 
@@ -128,7 +153,7 @@ const long mqttPort = 1883;
 
 ## Raspberry Pi 3 som IoT server
 
-Jeg har en Raspberry Pi 3 som kjører Ubuntu Mate som gjør en glimrende jobb som IoT-server. Her har jeg installert Mosquitto som er en MQTT broker, og Node-RED der jeg syr sammen tjenestene i en slags orkestrering. Jeg har også programvarene weewx som laster ned data fra værstasonen og publiserer dem også på meldingskøa.
+Jeg har en Raspberry Pi 3 som gjør en glimrende jobb som IoT-server. Her har jeg installert Mosquitto som er en MQTT broker, og Node-RED der jeg syr sammen tjenestene i en slags orkestrering. Jeg har også programvarene weewx som laster ned data fra værstasonen og publiserer dem også på meldingskøa.
 
 ### Mosquitto
 
@@ -191,12 +216,5 @@ Denne setter fargen rød på fullt. Verdier som kan settes er:
 * n (antall LEDs)
 * l (lysstyrke)
 
-## TO DO
-
-Det er mer jeg ønsker å gjøre:
-
-* Få prosessoren til å bruke mye mindre strøm ved å ikke være på nett hele tiden
-* Styre innstillingene fra en app på web eller iPhone
-* Få den til å ikke restarte
-
+Jeg har utvidet Node-RED med Node-RED Dashboard og enkelt laget sliders og en color picker for å endre fargene. Har ikke lagt så mye jobb i dette, men det fungerer brukbart.
 

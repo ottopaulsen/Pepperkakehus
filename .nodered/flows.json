@@ -1,8 +1,32 @@
 [
   {
-    "id": "498911f1.ec576",
+    "id": "f729b6ed.c8ec98",
+    "type": "ui_slider",
+    "z": "fdbf840f.0c5128",
+    "name": "LEDs",
+    "label": "LEDs",
+    "group": "1583b45a.c00c4c",
+    "order": 0,
+    "width": 0,
+    "height": 0,
+    "passthru": true,
+    "outs": "end",
+    "topic": "pepperkakehus/1/n",
+    "min": 0,
+    "max": "8",
+    "step": 1,
+    "x": 470,
+    "y": 620,
+    "wires": [
+      [
+        "377773be.15c7bc"
+      ]
+    ]
+  },
+  {
+    "id": "c47b910c.c01ee",
     "type": "inject",
-    "z": "7f5a92b2.e3fadc",
+    "z": "fdbf840f.0c5128",
     "name": "8 LEDs",
     "topic": "pepperkakehus/1/n",
     "payload": "8",
@@ -14,14 +38,14 @@
     "y": 22,
     "wires": [
       [
-        "664421eb.6240d"
+        "377773be.15c7bc"
       ]
     ]
   },
   {
-    "id": "b86a85b6.2ee2e8",
+    "id": "19555ba5.f80c94",
     "type": "inject",
-    "z": "7f5a92b2.e3fadc",
+    "z": "fdbf840f.0c5128",
     "name": "2 LEDs",
     "topic": "pepperkakehus/1/n",
     "payload": "2",
@@ -33,27 +57,27 @@
     "y": 100,
     "wires": [
       [
-        "664421eb.6240d"
+        "377773be.15c7bc"
       ]
     ]
   },
   {
-    "id": "664421eb.6240d",
+    "id": "377773be.15c7bc",
     "type": "mqtt out",
-    "z": "7f5a92b2.e3fadc",
+    "z": "fdbf840f.0c5128",
     "name": "Pepperkakehus",
     "topic": "",
     "qos": "1",
     "retain": "",
-    "broker": "fbf7abe2.ec30a8",
-    "x": 506.5,
-    "y": 91,
+    "broker": "cd091ac9.a44608",
+    "x": 760,
+    "y": 80,
     "wires": []
   },
   {
-    "id": "638b4dc2.1b9804",
+    "id": "e4c0496b.2f84f8",
     "type": "inject",
-    "z": "7f5a92b2.e3fadc",
+    "z": "fdbf840f.0c5128",
     "name": "Red On",
     "topic": "pepperkakehus/1/r",
     "payload": "100",
@@ -65,14 +89,14 @@
     "y": 183,
     "wires": [
       [
-        "664421eb.6240d"
+        "377773be.15c7bc"
       ]
     ]
   },
   {
-    "id": "d3cffd4c.817ee",
+    "id": "5c194b29.87ad34",
     "type": "inject",
-    "z": "7f5a92b2.e3fadc",
+    "z": "fdbf840f.0c5128",
     "name": "Red Off",
     "topic": "pepperkakehus/1/r",
     "payload": "0",
@@ -84,14 +108,14 @@
     "y": 184,
     "wires": [
       [
-        "664421eb.6240d"
+        "377773be.15c7bc"
       ]
     ]
   },
   {
-    "id": "717f59f8.1673a8",
+    "id": "b6ed4675.e9cbf8",
     "type": "inject",
-    "z": "7f5a92b2.e3fadc",
+    "z": "fdbf840f.0c5128",
     "name": "Green On",
     "topic": "pepperkakehus/1/g",
     "payload": "100",
@@ -103,14 +127,14 @@
     "y": 237,
     "wires": [
       [
-        "664421eb.6240d"
+        "377773be.15c7bc"
       ]
     ]
   },
   {
-    "id": "1b34c3cd.71291c",
+    "id": "eac5bd23.6b437",
     "type": "inject",
-    "z": "7f5a92b2.e3fadc",
+    "z": "fdbf840f.0c5128",
     "name": "Green Off",
     "topic": "pepperkakehus/1/g",
     "payload": "0",
@@ -122,14 +146,14 @@
     "y": 235,
     "wires": [
       [
-        "664421eb.6240d"
+        "377773be.15c7bc"
       ]
     ]
   },
   {
-    "id": "96e0a25a.6f44b",
+    "id": "ef9b2e70.7687d",
     "type": "inject",
-    "z": "7f5a92b2.e3fadc",
+    "z": "fdbf840f.0c5128",
     "name": "Blue On",
     "topic": "pepperkakehus/1/b",
     "payload": "100",
@@ -141,14 +165,14 @@
     "y": 285,
     "wires": [
       [
-        "664421eb.6240d"
+        "377773be.15c7bc"
       ]
     ]
   },
   {
-    "id": "111d9f30.3a14c1",
+    "id": "5bc5b39e.cc18dc",
     "type": "inject",
-    "z": "7f5a92b2.e3fadc",
+    "z": "fdbf840f.0c5128",
     "name": "Blue Off",
     "topic": "pepperkakehus/1/b",
     "payload": "0",
@@ -160,14 +184,14 @@
     "y": 280,
     "wires": [
       [
-        "664421eb.6240d"
+        "377773be.15c7bc"
       ]
     ]
   },
   {
-    "id": "c496b7ba.53e338",
+    "id": "41266e31.4ba73",
     "type": "inject",
-    "z": "7f5a92b2.e3fadc",
+    "z": "fdbf840f.0c5128",
     "name": "4 LEDs",
     "topic": "pepperkakehus/1/n",
     "payload": "4",
@@ -179,14 +203,14 @@
     "y": 60,
     "wires": [
       [
-        "664421eb.6240d"
+        "377773be.15c7bc"
       ]
     ]
   },
   {
-    "id": "a1fb4c69.97d9a",
+    "id": "6726150d.24977c",
     "type": "inject",
-    "z": "7f5a92b2.e3fadc",
+    "z": "fdbf840f.0c5128",
     "name": "20%",
     "topic": "pepperkakehus/1/l",
     "payload": "20",
@@ -198,14 +222,14 @@
     "y": 332,
     "wires": [
       [
-        "664421eb.6240d"
+        "377773be.15c7bc"
       ]
     ]
   },
   {
-    "id": "5f2b139b.11b79c",
+    "id": "89b46143.21ba3",
     "type": "inject",
-    "z": "7f5a92b2.e3fadc",
+    "z": "fdbf840f.0c5128",
     "name": "100%",
     "topic": "pepperkakehus/1/l",
     "payload": "100",
@@ -217,14 +241,14 @@
     "y": 249,
     "wires": [
       [
-        "664421eb.6240d"
+        "377773be.15c7bc"
       ]
     ]
   },
   {
-    "id": "50928157.08865",
+    "id": "4fa1055b.ac4d2c",
     "type": "inject",
-    "z": "7f5a92b2.e3fadc",
+    "z": "fdbf840f.0c5128",
     "name": "50%",
     "topic": "pepperkakehus/1/l",
     "payload": "50",
@@ -236,14 +260,14 @@
     "y": 290,
     "wires": [
       [
-        "664421eb.6240d"
+        "377773be.15c7bc"
       ]
     ]
   },
   {
-    "id": "2b42607f.471fd",
+    "id": "eaae3446.e85448",
     "type": "inject",
-    "z": "7f5a92b2.e3fadc",
+    "z": "fdbf840f.0c5128",
     "name": "Off",
     "topic": "pepperkakehus/1/l",
     "payload": "0",
@@ -255,14 +279,217 @@
     "y": 369,
     "wires": [
       [
-        "664421eb.6240d"
+        "377773be.15c7bc"
       ]
     ]
   },
   {
-    "id": "fbf7abe2.ec30a8",
+    "id": "c8138ec7.48d77",
+    "type": "ui_slider",
+    "z": "fdbf840f.0c5128",
+    "name": "Red",
+    "label": "Rød",
+    "group": "1583b45a.c00c4c",
+    "order": 0,
+    "width": 0,
+    "height": 0,
+    "passthru": true,
+    "outs": "end",
+    "topic": "pepperkakehus/1/r",
+    "min": 0,
+    "max": "100",
+    "step": 1,
+    "x": 470,
+    "y": 460,
+    "wires": [
+      [
+        "377773be.15c7bc"
+      ]
+    ]
+  },
+  {
+    "id": "a3c80955.ddcad8",
+    "type": "ui_slider",
+    "z": "fdbf840f.0c5128",
+    "name": "Green",
+    "label": "Grønn",
+    "group": "1583b45a.c00c4c",
+    "order": 0,
+    "width": 0,
+    "height": 0,
+    "passthru": true,
+    "outs": "end",
+    "topic": "pepperkakehus/1/g",
+    "min": 0,
+    "max": "100",
+    "step": 1,
+    "x": 470,
+    "y": 500,
+    "wires": [
+      [
+        "377773be.15c7bc"
+      ]
+    ]
+  },
+  {
+    "id": "c9233b9f.9dbab8",
+    "type": "ui_slider",
+    "z": "fdbf840f.0c5128",
+    "name": "Blue",
+    "label": "Blå",
+    "group": "1583b45a.c00c4c",
+    "order": 0,
+    "width": 0,
+    "height": 0,
+    "passthru": true,
+    "outs": "end",
+    "topic": "pepperkakehus/1/b",
+    "min": 0,
+    "max": "100",
+    "step": 1,
+    "x": 470,
+    "y": 540,
+    "wires": [
+      [
+        "377773be.15c7bc"
+      ]
+    ]
+  },
+  {
+    "id": "33a17796.202758",
+    "type": "ui_slider",
+    "z": "fdbf840f.0c5128",
+    "name": "Nivå",
+    "label": "Nivå",
+    "group": "1583b45a.c00c4c",
+    "order": 0,
+    "width": 0,
+    "height": 0,
+    "passthru": true,
+    "outs": "end",
+    "topic": "pepperkakehus/1/l",
+    "min": 0,
+    "max": "100",
+    "step": 1,
+    "x": 470,
+    "y": 580,
+    "wires": [
+      [
+        "377773be.15c7bc"
+      ]
+    ]
+  },
+  {
+    "id": "645b6b96.b3c884",
+    "type": "ui_colour_picker",
+    "z": "fdbf840f.0c5128",
+    "name": "",
+    "label": "Farge",
+    "group": "1583b45a.c00c4c",
+    "format": "rgb",
+    "outformat": "object",
+    "showSwatch": true,
+    "showPicker": true,
+    "showValue": true,
+    "showHue": true,
+    "showAlpha": false,
+    "showLightness": true,
+    "dynOutput": "false",
+    "order": 0,
+    "width": 0,
+    "height": 0,
+    "passthru": true,
+    "topic": "",
+    "x": 70,
+    "y": 620,
+    "wires": [
+      [
+        "86fd6659.2214b8",
+        "28850358.27e56c",
+        "6ba27e2c.56419",
+        "44f19be9.99e7e4"
+      ]
+    ]
+  },
+  {
+    "id": "86fd6659.2214b8",
+    "type": "function",
+    "z": "fdbf840f.0c5128",
+    "name": "Calc color",
+    "func": "var r = { \n    topic: 'pepperkakehus/1/r',\n    payload: '' + Math.round(msg.payload.r / 255 * 100) \n};\nvar g = { \n    topic: 'pepperkakehus/1/g',\n    payload: '' + Math.round(msg.payload.r / 255 * 100) \n};\nvar b = { \n    topic: 'pepperkakehus/1/b',\n    payload: '' + Math.round(msg.payload.r / 255 * 100) \n};\nreturn [ r, g, b ];",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 220,
+    "y": 700,
+    "wires": [
+      [
+        "377773be.15c7bc"
+      ]
+    ]
+  },
+  {
+    "id": "28850358.27e56c",
+    "type": "function",
+    "z": "fdbf840f.0c5128",
+    "name": "",
+    "func": "\nreturn {payload: msg.payload.r};",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 330,
+    "y": 460,
+    "wires": [
+      [
+        "c8138ec7.48d77"
+      ]
+    ]
+  },
+  {
+    "id": "6ba27e2c.56419",
+    "type": "function",
+    "z": "fdbf840f.0c5128",
+    "name": "",
+    "func": "\nreturn {payload: msg.payload.g};",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 330,
+    "y": 500,
+    "wires": [
+      [
+        "a3c80955.ddcad8"
+      ]
+    ]
+  },
+  {
+    "id": "44f19be9.99e7e4",
+    "type": "function",
+    "z": "fdbf840f.0c5128",
+    "name": "",
+    "func": "\nreturn {payload: msg.payload.b};",
+    "outputs": 1,
+    "noerr": 0,
+    "x": 330,
+    "y": 540,
+    "wires": [
+      [
+        "c9233b9f.9dbab8"
+      ]
+    ]
+  },
+  {
+    "id": "1583b45a.c00c4c",
+    "type": "ui_group",
+    "z": "",
+    "name": "Lys",
+    "tab": "b53f5551.b92918",
+    "disp": true,
+    "width": "6",
+    "collapse": false
+  },
+  {
+    "id": "cd091ac9.a44608",
     "type": "mqtt-broker",
     "z": "",
+    "name": "",
     "broker": "10.0.0.15",
     "port": "1883",
     "clientid": "",
@@ -270,11 +497,20 @@
     "compatmode": true,
     "keepalive": "60",
     "cleansession": true,
-    "willTopic": "",
-    "willQos": "0",
-    "willPayload": "",
     "birthTopic": "",
     "birthQos": "0",
-    "birthPayload": ""
+    "birthPayload": "",
+    "closeTopic": "",
+    "closePayload": "",
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": ""
+  },
+  {
+    "id": "b53f5551.b92918",
+    "type": "ui_tab",
+    "z": "",
+    "name": "Pepperkakehus",
+    "icon": "location_city"
   }
 ]
